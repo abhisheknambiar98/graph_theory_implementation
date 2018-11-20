@@ -88,9 +88,12 @@ int main(){
         }
     }
     cout<<"\nShortest spanning tree:\n";
+    int sum=0;
     for(int i=0;i<p;i++){
          cout<<"\n("<<spantree[i].v1<<","<<spantree[i].v2<<","<<spantree[i].w<<")";
+         sum+=spantree[i].w;
     }
+    cout<<"\nMinimum cost="<<sum<<"\n";
 
 
 }
