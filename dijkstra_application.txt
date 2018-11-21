@@ -1,0 +1,3 @@
+OPEN SHORTEST PATH  FIRST (OSPF)   
+The most widely used routing protocols is OSPF and is suitable for  large  network.  OSPF  is  a  Link  State  protocol  based  on  cost under a single routing solution that maintains information of all nodes  on  the  network.  Since  each  nodes  holds  the  entire  ne
+twork  structure  information,  each  nodes  can  independently  calculate  the  path  to  reach  the  destination  by  adopting  shortest  path algorithm namely Dijkstra’s algorithm.
