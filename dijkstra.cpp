@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <limits.h> 
+
   
 #define N 9 
   
@@ -21,18 +22,17 @@ void displayPath(int path[], int j)
     if (path[j] == - 1) 
         return; 
     displayPath(path, path[j]); 
-    printf("%d ", j); 
+    printf(" S%d ", j); 
 } 
   
 
 int displayDistance(int dist[], int n,  
-                      int path[]) 
-{ 
-    int src = 0; 
-    printf("Vertex\t Distance\tPath"); 
+                      int path[],int src ) 
+{   
+    printf("Systems in Network\t         Cost(Bandwidth)\t     Path"); 
     for (int i = 1; i < N; i++) 
     { 
-        printf("\n%d -> %d \t\t %d\t\t%d ", 
+        printf("\nSystem %d -> System %d \t\t %d\t\tS%d ", 
                       src, i, dist[i], src); 
         displayPath(path, i); 
     } 
@@ -47,7 +47,7 @@ void dijkstra(int graph[N][N], int src)
 
     for (int i = 0; i < N; i++) 
     { 
-        path[0] = -1; 
+        path[src] = -1; 
         dist[i] = INT_MAX; 
         visited[i] = false; 
     } 
@@ -66,11 +66,11 @@ void dijkstra(int graph[N][N], int src)
             }  
     } 
   
-    displayDistance(dist, N, path); 
+    displayDistance(dist, N, path,src); 
 } 
   
 int  main() 
-{  
+{  int src;
     int graph[N][N] = {{0, 4, 0, 0, 0, 0, 0, 8, 0}, 
                        {4, 0, 8, 0, 0, 0, 0, 11, 0}, 
                         {0, 8, 0, 7, 0, 4, 0, 0, 2}, 
@@ -81,7 +81,8 @@ int  main()
                         {8, 11, 0, 0, 0, 0, 1, 0, 7}, 
                         {0, 0, 2, 0, 0, 0, 6, 7, 0} 
                     }; 
-  
-    dijkstra(graph, 0); 
+    printf("\nEnter the system no. that send the request: ");
+    scanf("%d",&src);
+    dijkstra(graph, src); 
     return 0;
 } 
